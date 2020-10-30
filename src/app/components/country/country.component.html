@@ -6,8 +6,10 @@
     
     <div class="row">
         <div [className]="countryInfo.name ? 'col col-md-8' : 'col col-md-12'">
-            <div class="list-group">
-                <a *ngFor="let country of countries" (click)="getInfoCountry(country.name)" [routerLink]="getRoutesNavigate(country.name)" class="list-group-item list-group-item-action">{{ country.name }}</a>
+            <div class="list-group" *ngFor="let country of countries">
+                
+                <app-country-elem (countryClicked)="getInfoCountry($event)" [country]="country.name"></app-country-elem>
+
             </div>
         </div>
 
@@ -20,8 +22,10 @@
                 <li class="list-group-item">
                     <strong>Países Fronterizos:</strong>
                     <hr>
-                    <div class="list-group">
-                        <a class="list-group-item list-group-item-action" *ngFor="let border of countryInfo.borders" (click)="getInfoCountry(border)" [routerLink]="getRoutesNavigate(border)">{{ border }}</a>
+                    <div class="list-group" *ngFor="let border of countryInfo.borders">
+                        
+                        <app-country-elem (countryClicked)="getInfoCountry($event)" [country]="border"></app-country-elem>
+
                     </div>
                 </li>
               </ul>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { CountryService } from '../../shared/services/country.service';
 
@@ -33,14 +33,6 @@ export class CountryComponent implements OnInit {
       err => {
         console.log(err)
       });
-  }
-
-  getRoutesNavigate (nextCountry) {
-    let urlMap = [];
-    
-    urlMap.push(`${this.router.url}/${nextCountry}`);
-
-    return urlMap;
   }
 
   getInfoCountry (nameCountry) {
