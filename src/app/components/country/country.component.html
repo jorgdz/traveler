@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="card-header">
+        <h1>Países de la región (USAN)</h1>
+        <h2 *ngIf="totalAreas > 0">Área recorrida: {{totalAreas}}</h2>
+    </div>
+    
+    <div class="row">
+        <div [className]="countryInfo.name ? 'col col-md-8' : 'col col-md-12'">
+            <div class="list-group">
+                <a *ngFor="let country of countries" (click)="getInfoCountry(country.name)" [routerLink]="getRoutesNavigate(country.name)" class="list-group-item list-group-item-action">{{ country.name }}</a>
+            </div>
+        </div>
+
+        <div class="col col-md-4" *ngIf="countryInfo.name">
+            <ul class="list-group">
+                <li class="list-group-item"><strong>País:</strong> {{ countryInfo.name }}</li>
+                <li class="list-group-item"><strong>Población:</strong> {{ countryInfo.population }}</li>
+                <li class="list-group-item"><strong>Código telefónico:</strong> {{ countryInfo.callingCodes }}</li>
+                <li class="list-group-item"><strong>Área:</strong> {{ countryInfo.area }}</li>
+                <li class="list-group-item">
+                    <strong>Países Fronterizos:</strong>
+                    <hr>
+                    <div class="list-group">
+                        <a class="list-group-item list-group-item-action" *ngFor="let border of countryInfo.borders" (click)="getInfoCountry(border)" [routerLink]="getRoutesNavigate(border)">{{ border }}</a>
+                    </div>
+                </li>
+              </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1 @@
+export const restCountries:string = 'https://restcountries.eu/rest/v2';
